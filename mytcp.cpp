@@ -202,32 +202,32 @@ void mytcp::establish_connection(char const *address, char const *filename, char
   send_addr.sin_port = htons(8888);
   
   // 第一个H包的发送
-  // swindow.window[swindow.tail].seq = 0;
-  // swindow.window[swindow.tail].sign = 'H';
-  // swindow.window[swindow.tail].dataSize = 0;
-  // swindow.window[swindow.tail].recvWindow = RECV_BUFFER_SIZE;
-  // printf("client send H pkg\n");
-  // sendPkg(&(swindow.window[swindow.tail]));
-  // startTimer(TimeoutInterval);
-  // swindow.tail = (swindow.tail + 1) % SENDINGWINDOW_SIZE;
+  swindow.window[swindow.tail].seq = 0;
+  swindow.window[swindow.tail].sign = 'H';
+  swindow.window[swindow.tail].dataSize = 0;
+  swindow.window[swindow.tail].recvWindow = RECV_BUFFER_SIZE;
+  printf("client send H pkg\n");
+  sendPkg(&(swindow.window[swindow.tail]));
+  startTimer(TimeoutInterval);
+  swindow.tail = (swindow.tail + 1) % SENDINGWINDOW_SIZE;
 
-  // while (true)
-  // {
-  //   int count = recv(fd, &recvSeg, sizeof(tcpSeg), 0);
-  //   recvFlag = true;
-  //   if (count == -1)
-  //   {
-  //     printf("error : recv error\n");
-  //     exit(-1);
-  //   }
-  //   if (recvSeg.sign == 'H')
-  //   {
-  //     send_addr.sin_port = htons(recvSeg.seq);
-  //     printf("recv H new port %d", recvSeg.seq);
-  //     swindow.head = swindow.tail;
-  //     break;
-  //   }
-  // }
+  while (true)
+  {
+    int count = recv(fd, &recvSeg, sizeof(tcpSeg), 0);
+    recvFlag = true;
+    if (count == -1)
+    {
+      printf("error : recv error\n");
+      exit(-1);
+    }
+    if (recvSeg.sign == 'H')
+    {
+      send_addr.sin_port = htons(recvSeg.seq);
+      printf("recv H new port %d", recvSeg.seq);
+      swindow.head = swindow.tail;
+      break;
+    }
+  }
 
   // 第一个S包的发送
   swindow.window[swindow.tail].seq = 0;
