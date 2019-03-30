@@ -26,7 +26,7 @@ struct tcpSeg
 };
 ```
 
-####2. 拥塞控制类`congestion_control`
+#### 2. 拥塞控制类`congestion_control`
 
 ```c++
 enum Event
