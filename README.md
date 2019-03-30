@@ -1,4 +1,6 @@
-# myTCP_cpp
+# LFTP
+
+计算机网络课程个人项目，仅使用UDP完成TCP的特性并实现一个简易的FTP，支持多用户同时上传下载文件。
 
 ## 设计文档
 
@@ -215,3 +217,34 @@ class mytcp {
 
 当通信结束后，`server`会结束进程，`mutiServer`通过`waitpid`来处理结束了的子进程，防止其变成僵尸进程，也把之前记录的客户端的信息删除。
 
+### 运行截图
+
+#### 1. 握手阶段：确定客户端想要使用的功能 send/recv
+
+客户端：
+
+![shake1](images\client_handshake.png)
+
+服务器端：
+
+![shake1](images\server_handshake.png)
+
+#### 2. 收发数据阶段
+
+客户端：
+
+![recv](G:\study\大三上\code\myTCP_cpp\images\client_recv.png)
+
+服务器端：
+
+![send](images\server_send.png)
+
+#### 3. 结束阶段
+
+客户端：
+
+![close1](images\client_close.png)
+
+服务器端：
+
+![close2](images\server_close.png)
