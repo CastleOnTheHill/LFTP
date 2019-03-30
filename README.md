@@ -223,28 +223,28 @@ class mytcp {
 
 客户端：
 
-![shake1](images\client_handshake.png)
+![shake1](images/client_handshake.png)
 
 服务器端：
 
-![shake1](images\server_handshake.png)
+![shake1](images/server_handshake.png)
 
 #### 2. 收发数据阶段
 
 客户端：
 
-![recv](G:\study\大三上\code\myTCP_cpp\images\client_recv.png)
+![recv](images/client_recv.png)
 
 服务器端：
 
-![send](images\server_send.png)
+![send](images/server_send.png)
 
 #### 3. 结束阶段
 
 客户端：
 
-![close1](images\client_close.png)
+![close1](images/client_close.png)
 
 服务器端：
 
-![close2](images\server_close.png)
+![close2](images/server_close.png)
